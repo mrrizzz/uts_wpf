@@ -7,7 +7,7 @@ export function handleError(error: unknown, res: Response) {
 
   if (error instanceof ZodError) {
     const errorMessages = error.errors.map((err) => ({
-      field: err.path.join("."),
+      field: err.path.join(),
       message: err.message,
     }));
 

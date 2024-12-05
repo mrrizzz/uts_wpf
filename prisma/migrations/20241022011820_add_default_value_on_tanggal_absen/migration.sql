@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Absensi" ALTER COLUMN "tanggal" SET DEFAULT CURRENT_TIMESTAMP;

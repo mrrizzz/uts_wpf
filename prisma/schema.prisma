@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  // directUrl = env("DIRECT_URL")
 }
 
 model Karyawan {
@@ -21,6 +21,8 @@ model Karyawan {
   jabatan        Jabatan   @relation(fields: [jabatan_id], references: [id])
   jabatan_id     Int
   status         Status
+  updated_at     DateTime @updatedAt
+  created_at     DateTime @default(now())
   absensi        Absensi[]
   gaji           Gaji[]
 }
@@ -41,9 +43,9 @@ model Absensi {
   id              Int            @id @default(autoincrement())
   karyawan        Karyawan       @relation(fields: [karyawan_id], references: [id])
   karyawan_id     Int
-  tanggal         DateTime       @db.Date
-  waktu_masuk     DateTime?       @db.Time()
-  waktu_keluar    DateTime?       @db.Time()
+  tanggal         DateTime       @db.Date @default(now())
+  waktu_masuk     DateTime?      @default(now())
+  waktu_keluar    DateTime?        
   status_absensi  StatusAbsensi
 }
 

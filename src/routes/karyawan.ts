@@ -48,6 +48,7 @@ router.get("/list", async (req, res) => {
       totalItems,
       baseUrl,
     };
+    console.log(req.path);
     const karyawan = await db.karyawan.findMany({ skip, take });
     return response(
       res,
@@ -62,7 +63,7 @@ router.get("/list", async (req, res) => {
   }
 });
 
-router.get("/q", async (req, res) => {
+router.get("/search", async (req, res) => {
   try {
     const {
       id,
